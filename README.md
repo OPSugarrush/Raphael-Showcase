@@ -24,16 +24,16 @@ Rαphael follows a **hexagonal ("ports and adapters") architecture**, split
 into three layers:
 
 ```
-domain/         pure business logic — zero external dependencies
-application/    orchestration — coordinates domain logic and data access
-adapters/       swappable, external-facing — database, third-party APIs, etc.
+domain/         pure business logic - zero external dependencies
+application/    orchestration - coordinates domain logic and data access
+adapters/       swappable, external-facing - database, third-party APIs, etc.
 ```
 
 The core idea: business logic (how a budget is calculated, how macro
 targets are derived) is written as plain Python with no awareness of
 databases, web frameworks, or external services. That logic is testable
-in isolation, and the surrounding infrastructure — SQLite today, a
-different database or a third-party pricing API later — can change
+in isolation, and the surrounding infrastructure - SQLite today, a
+different database or a third-party pricing API later - can change
 without touching it.
 
 ## What's included in this repository
@@ -42,7 +42,7 @@ without touching it.
 |---|---|
 | `snippets/budget_calculator.py` | Pure domain logic for turning income, expenses, and a savings goal into a weekly food budget. No database or framework imports. |
 | `snippets/macro_calculator.py` | Pure domain logic applying the Mifflin-St Jeor equation to compute calorie and macro targets, including a deliberate safety floor on minimum calorie recommendations. |
-| `snippets/repository_pattern.py` | A trimmed look at the adapter layer that converts between domain objects and database rows — the boundary that keeps the two previous files free of any database dependency. |
+| `snippets/repository_pattern.py` | A trimmed look at the adapter layer that converts between domain objects and database rows - the boundary that keeps the two previous files free of any database dependency. |
 
 Each file includes a header comment explaining its origin and context.
 
