@@ -22,7 +22,7 @@ from datetime import date, timedelta
 
 @dataclass
 class BudgetBreakdown:
-    """The result of one weekly budget calculation — everything the API
+    """The result of one weekly budget calculation - everything the API
     and UI need to explain *why* the food budget is what it is, not just
     the final number."""
 
@@ -36,7 +36,7 @@ class BudgetCalculator:
     @staticmethod
     def normalize_to_weekly(amount: float, frequency: str) -> float:
         """Converts a recurring amount to its weekly equivalent.
-        Monthly uses 12/52 rather than a flat /4 — a year has 52.18 weeks,
+        Monthly uses 12/52 rather than a flat /4 - a year has 52.18 weeks,
         not 48, so dividing a monthly figure by 4 would overstate it."""
         if frequency == "weekly":
             return amount
@@ -56,7 +56,7 @@ class BudgetCalculator:
 
     @staticmethod
     def _one_time_total_in_week(expenses, week_start: date) -> float:
-        """One-off expenses aren't smoothed across weeks — they only count
+        """One-off expenses aren't smoothed across weeks - they only count
         in the specific week they actually happened."""
         week_end = week_start + timedelta(days=6)
         return sum(
@@ -87,7 +87,7 @@ class BudgetCalculator:
     ) -> BudgetBreakdown:
         """today defaults to the real current date when not supplied.
         Tests can pass a fixed date instead, so results are fully
-        reproducible rather than depending on when the test happens to run —
+        reproducible rather than depending on when the test happens to run -
         a deliberate choice to keep this function free of hidden state."""
         today = today or date.today()
 
