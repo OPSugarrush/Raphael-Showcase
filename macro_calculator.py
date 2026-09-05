@@ -3,11 +3,11 @@
 #
 # Shared alongside budget_calculator.py to show the same architectural
 # pattern applied to a completely different problem domain (nutrition
-# science instead of personal finance) — both are pure, dependency-free
+# science instead of personal finance) - both are pure, dependency-free
 # calculators that sit at the core of Rαphael's hexagonal architecture.
 #
 # Worth noting for reviewers: the MIN_SAFE_CALORIES floor near the bottom
-# is a deliberate product/engineering decision, not an oversight — the
+# is a deliberate product/engineering decision, not an oversight - the
 # calculator will not recommend a calorie target below a commonly-cited
 # safe minimum for unsupervised daily intake, regardless of how aggressive
 # the underlying arithmetic would otherwise suggest.
@@ -19,8 +19,8 @@ from dataclasses import dataclass
 
 @dataclass
 class MacroTargets:
-    bmr: float  # Basal Metabolic Rate — calories burned at total rest
-    tdee: float  # Total Daily Energy Expenditure — BMR adjusted for activity
+    bmr: float  # Basal Metabolic Rate - calories burned at total rest
+    tdee: float  # Total Daily Energy Expenditure - BMR adjusted for activity
     calorie_target: float  # TDEE adjusted for goal, floored at a safe minimum
     protein_g: float
     carbs_g: float
@@ -44,7 +44,7 @@ class MacroCalculator:
         "bulk": 300,
     }
 
-    # Higher protein during a cut than a maintain/bulk — extra protein in
+    # Higher protein during a cut than a maintain/bulk - extra protein in
     # a calorie deficit helps preserve muscle mass that would otherwise be
     # at greater risk of being lost.
     PROTEIN_G_PER_KG = {
@@ -55,12 +55,12 @@ class MacroCalculator:
 
     FAT_PERCENT_OF_CALORIES = 0.25
 
-    # Deliberate safety floor — see module header comment above.
+    # Deliberate safety floor - see module header comment above.
     MIN_SAFE_CALORIES = {"male": 1500, "female": 1200}
 
     @staticmethod
     def calculate_bmr(weight_kg: float, height_cm: float, age: int, biological_sex: str) -> float:
-        """Mifflin-St Jeor equation — generally considered more accurate
+        """Mifflin-St Jeor equation - generally considered more accurate
         for modern populations than the older Harris-Benedict formula."""
         base = 10 * weight_kg + 6.25 * height_cm - 5 * age
         return base + 5 if biological_sex == "male" else base - 161
