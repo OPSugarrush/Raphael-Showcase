@@ -1,12 +1,12 @@
-# EXCERPT — Rαphael (proprietary project)
-# Source: app/adapters/db/repositories.py (trimmed — full file handles
+# EXCERPT - Rαphael (proprietary project)
+# Source: app/adapters/db/repositories.py (trimmed - full file handles
 # several more entities following the identical pattern)
 #
 # This is the piece that completes the story the other two snippets don't
 # show: how domain objects (plain dataclasses, see budget_calculator.py /
 # macro_calculator.py) get converted to and from actual database rows.
 #
-# Every function here does exactly one of two things — takes a domain
+# Every function here does exactly one of two things - takes a domain
 # object and saves it as a database row, or reads a database row and
 # converts it back into a domain object. Domain code never imports a
 # database library directly; this file is the only place that boundary
